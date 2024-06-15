@@ -58,6 +58,31 @@ This web application is built using Django and provides functionality to upload 
 
    Open your web browser and go to `http://localhost:8000/` to use the application.
 
+### Directory Structure
+Here's an overview of the directory structure for the project:
+```bash
+csv_analysis_project/
+    manage.py
+    csv_analysis_project/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    analysis_app/
+        __init__.py
+        admin.py
+        apps.py
+        models.py
+        views.py
+        urls.py
+        forms.py
+        templates/
+            analysis_app/
+                upload.html
+                results.html
+
+   ```
+
 ### Usage
 
 1. **Upload CSV File**:
@@ -77,4 +102,3 @@ This web application is built using Django and provides functionality to upload 
 - **Backend**: Django
 - **Frontend**: Django Templates, HTML, CSS
 - **Libraries**: pandas, numpy, matplotlib, seaborn
-
