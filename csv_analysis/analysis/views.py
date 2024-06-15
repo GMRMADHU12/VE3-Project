@@ -44,22 +44,18 @@ def analyze(request):
     except Exception as e:
         return render(request, 'analysis/error.html', {'message': str(e)})
 
-    # Display the first few rows of the data
     head = data.head().to_html()
 
-    # Calculate summary statistics
     summary = data.describe().to_html()
 
-    # Calculate additional statistics
     stats = data.select_dtypes(include=['number']).agg(['mean', 'median', 'std']).to_html()
 
-    # Identify missing values
-    missing_values = data.isnull().sum()  # Series object of column-wise sum of missing values
+    missing_values = data.isnull().sum()  
 
-    # Handle missing values (simple method: drop rows with missing values)
+    
     data_cleaned = data.dropna()
 
-    # Generate histograms for numerical columns
+
     histograms = []
     for column in data.select_dtypes(include=['number']).columns:
         plt.figure()
@@ -78,7 +74,7 @@ def analyze(request):
         'head': head,
         'summary': summary,
         'stats': stats,
-        'missing_values': missing_values,  # Pass the Series object directly
+        'missing_values': missing_values,  
         'histograms': histograms,
     }
     return render(request, 'analysis/analyze.html', context)
