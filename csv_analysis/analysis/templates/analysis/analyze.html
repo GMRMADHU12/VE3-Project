@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Analysis</title>
+</head>
+<body>
+    <h1>Data Analysis Results</h1>
+
+    <h2>First Few Rows</h2>
+    {{ head|safe }}
+
+    <h2>Summary Statistics</h2>
+    {{ summary|safe }}
+
+    <h2>Additional Statistics</h2>
+    {{ stats|safe }}
+
+    <h2>Missing Values</h2>
+    <ul>
+        {% for column, count in missing_values.items %}
+            <li>{{ column }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Histograms</h2>
+    {% for histogram in histograms %}
+        <img src="data:image/png;base64,{{ histogram }}" />
+    {% endfor %}
+</body>
+</html>
